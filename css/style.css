@@ -1,0 +1,63 @@
+body,html,div,a,span,ul,li,dl,dt,dd,i,h1,h2,h3,select,p,header,label,section,article,aside,nav,footer,progress,abbr,i{
+	margin: 0;
+	padding: 0;
+}
+header,section,article,aside,nav,footer {
+	display: block;
+}
+body,html { 
+	background-color: #fff;
+	font-family:"Microsoft YaHei","Arial","sans-serif";
+	color: #000;
+    -webkit-text-size-adjust:none;
+    /*-webkit-tap-highlight-color:rgba(255,255,255,0);*/
+}
+input {
+	-webkit-appearance:none;
+}
+a {
+	text-decoration: none;
+}
+i,abbr{
+	font-style: normal;        
+	display: block;
+}
+ul,dl {
+	list-style-type: none;
+}
+img {
+	vertical-align: top;
+}
+a img {
+	border: none;
+}
+input:focus,select:focus {
+	outline: none;
+}
+.clear {}
+.clear:after {
+	content: "";
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.rl {
+	position: relative;
+	right: 0;
+	top: 0;
+}
+.as {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+body {
+
+	margin: 0 auto;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d; 
+
+	-webkit-backface-visibility: hidden;
+}

@@ -1,0 +1,36 @@
+body,html,ul,li,span,abbr,a,p,i,dl,dt,dd,img,h2,span{
+	margin: 0;
+	padding: 0;
+}
+header,section, {
+	display: block;
+}
+ul,dl {
+	list-style-type: none;
+}
+body,html { 
+	background-color: #f0f0f0;
+	font-family:"Microsoft YaHei","Arial","sans-serif";
+	color: #f0f0f0;
+    -webkit-text-size-adjust:none;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
+    /*overflow: hidden;*/
+}
+a {
+	text-decoration: none;
+}
+a img {
+	border: none;
+}
+i {
+	font-style: normal;
+}
+.clearfix {}
+.clearfix:after {
+	content: "";
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.rl {position: relative;top: 0;left: 0;}

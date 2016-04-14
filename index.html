@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>手游下载专家</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		body,html {background-color: #fff;height: 100%;font-size: 12px;color: #000; -webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(255,255,255,0);}
+		body,html,a,img,p,section,span {margin: 0;padding: 0;}
+		a img {border: none;}
+		.wrap {max-width: 450px;margin: 0 auto;}
+		.top-title {height: 18px;display: block;margin-left: 18px;padding-top: 20px;}
+		.log-img {display: block;height: 85px;margin: 45px auto 0;}
+		.info {display: block;font-size: 14px;text-align: center;margin-top: 15px;height: 14px;line-height: 14px;}
+
+		.down-btn {display: block;height: 36px;line-height: 36px;margin: 28px auto 0;text-align: center;font-size: 14px;color: #fff;background-color: #fc3c45;width: 47.5%;}
+		.footer {position: absolute;bottom: 0;left: 0;width: 100%;height: 160px;background-color: #f5463c}
+		.footer img {position: relative;z-index: 2;height: 107px;display: block;width: 100%;}
+		.footer p {margin-top: 10px;line-height: 30px;color: rgba(255,255,255,0.6);text-align: center;font-size: 12px;}
+		/* 弹出层 */
+		.cover{background-color: rgba(0, 0, 0, .8);display: none;height: 100%;left: 0;position: fixed;top: 0;width: 100%;z-index: 9;}
+		#tip-wechat,
+		#tip-weibo {display: none;left: 0;margin: 0 auto;position: fixed;top: 0;width: 100%;}
+		.tip-point {height: auto;position: absolute;right: 10px;top: 0;width: 10%;}
+		.tip-img {display: block;height: auto;margin: 30px auto 0;width: 74%;}
+		@media screen and (min-width: 330px){ 
+			.top-title {height: 22px;padding-top: 24px;}
+			.log-img {margin-top: 60px;height: 99px;}
+			.info {font-size: 16px;margin-top: 29px;height: 16px;line-height: 16px;}
+			.down-btn {font-size: 16px;height: 42px;line-height: 42px;margin-top: 30px;}
+			.footer {height: 190px;}
+			.footer img {height: 120px;}
+			.footer p {font-size: 14px;}
+		}
+
+		@media screen and (min-width: 380px){ 
+			.top-title {height: 24px;padding-top: 26px;}
+			.log-img {margin-top: 80px;height: 109px;}
+			.info {margin-top: 32px;}
+			.down-btn {height: 46px;line-height: 46px;}
+			.footer {height: 215px;}
+			.footer img {height: 138px;}
+			.footer p {margin-top: 35px;}
+		}
+
+		@media screen and (min-width: 420px){
+			.footer {
+				max-width: 450px;
+			    margin: 0 auto;
+			    left: 50%;
+			    margin-left: -225px;
+			}
+		}
+        /*4s*/
+
+        @media screen and (max-width: 320px) and (max-height: 380px){
+            .log-img {margin-top: 10px;}
+            .footer {height: 130px;}
+            .footer img {height: 90px;}
+        }
+
+        @media screen and (orientation:landscape) and (max-width: 1024px){
+            .footer {margin: 30px auto 0;position: static;}
+        }
+	</style>
+</head>
+<body>
+	<section class="wrap">
+		<img class="top-title" src="http://img1.7659.com/7f/ea/3468447fabbf2e834e430073ba10.jpg"/>
+		<img class="log-img" src="http://img2.7659.com/db/17/46cac4a73cc36fd9276810277494.jpg"/>
+		<p class="info">手游下载专家</p>
+		<a href="javascript:void(0)" class="down-btn" id="download">立即下载</a><span id="appsize" style="display: none;"></span>
+		<section class="footer">
+			<img src="http://img2.7659.com/fb/48/63e528042f624a31855686a90b3c.jpg"/>
+			<p>@2015 7659.com,all right reserved</p>
+		</section>
+	</section>
+	 <script src="js/ky-channel-api2.js"></script>
+    <script>
+        (function(){
+            KyChannelApi.start({
+                btns: [document.getElementById('download')],
+                success: function(result){
+                   // document.getElementById('appsize').innerHTML = '仅'+result.data.appinfo.appsize+'M';
+                }
+            });
+        })();
+
+        (function(){
+            var ua = navigator.userAgent,
+                isIphone = /iphone/gi.test(ua),
+                isIpad = /ipad/gi.test(ua),
+                channel = getChannelKey();
+
+            function getChannelKey(){
+                var search = document.location.search,
+                    key = /[?&]fr=([^&]+)/gi.exec(document.location.search);
+                key = key&&key[1] ? key[1] : null;
+                return key;
+            }
+
+            function postLog(){
+                var client = isIpad ? 'ipad' : (isIphone ? 'iphone': 'mobile');
+                _hmt.push(['_trackEvent', (channel||'null'), 'click', client]);
+            }
+
+            document.getElementById('download').addEventListener('click', function(){
+                postLog();
+            });
+
+        })();
+    </script>
+	<!-- 弹出层 -->
+	<div class="cover" id="cover-layer">
+        <div id="tip-wechat">
+            <img src="http://img1.7659.com/51/29/f07cf09757c0e87355e8517cf4a1.png" alt="" class="tip-point">
+            <img src="http://img2.7659.com/3e/75/caa4dea3a07f0b6bf7d678c471c1.png" alt="微信请点击右上角使用Safari打开下载应用" class="tip-img">
+        </div>
+        <div id="tip-weibo">
+            <img src="http://img1.7659.com/51/29/f07cf09757c0e87355e8517cf4a1.png" alt="" class="tip-point">
+            <img src="http://img1.7659.com/f2/50/b10f359e63bfc158f14c307e7a8d.png" alt="微博请点击右上角使用Safari打开下载应用" class="tip-img">
+        </div>
+    </div>
+    <script>
+        (function(){
+            var nav = navigator,
+                doc = document,
+                ua = nav.userAgent,
+                platform = nav.platform,
+                download = doc.getElementById('download'),
+                cover = doc.getElementById('cover-layer'),
+                wechat = doc.getElementById('tip-wechat'),
+                weibo = doc.getElementById('tip-weibo'),
+                isInIOS;
+            isInIOS = (/iphone/i.test(ua) || /ipad/i.test(ua)) && (/iphone/i.test(platform) || /ipad/i.test(platform));
+            cover.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                this.style.display = 'none';
+            });
+            download.addEventListener('click', function(e) {
+                if (!isInIOS) {
+                    e.preventDefault();
+                } else if(/MicroMessenger/i.test(ua)) {
+                    e.preventDefault();
+                    wechat.style.display = 'block';
+                    cover.style.display = 'block';
+                } else if(/Weibo/i.test(ua)) {
+                    e.preventDefault();
+                    weibo.style.display = 'block';
+                    cover.style.display = 'block';
+                }
+            });
+        })();
+    </script>
+    <div style="display: none">
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?908113cd46cc8abf98a30ffb58c132c9";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+    </div>
+</body>
+</html>
